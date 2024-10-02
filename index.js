@@ -2,7 +2,7 @@
 const mainContainer = document.querySelector(".main-container");
 let currentBoxIndex = 0;
 const hiddenWord = ["P","A","R","T","Y"];
-const hiddenWordString = hiddenWord.toString().toLowerCase();
+const hiddenWordString = hiddenWord.join().toLowerCase();
 const totalBoxes = 30;
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 const splitLetters = letters.split(',');
@@ -82,10 +82,10 @@ let currentRow = rows[rowIndex];
 
 function checkGuess(){
   const guess = Array.from(currentRow).map(box=> box.textContent.trim().toLowerCase());
-  const hiddenWordCopy = [...hiddenWord]
+  const hiddenWordCopy = [...hiddenWord.map(letter => letter.toLowerCase())];
   let allCorrect;
   const guessWord = guess.toString();
-  
+ 
 
   
 for(let i = 0; i < guess.length; i++){
@@ -99,11 +99,12 @@ for(let i = 0; i < guess.length; i++){
       
       currentRow[i].classList.add('yellow');
       hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null;
-
+      console.log(guess[i])
     }
     else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
       allCorrect = false;
+      
     }
   }, i * 450);
 
