@@ -77,11 +77,14 @@ let currentRow = rows[rowIndex];
 
 function checkGuess(){
   const guess = Array.from(currentRow).map(box=> box.textContent.trim().toLowerCase());
+
   
 for(let i = 0; i < guess.length; i++){
   if(guess[i] === hiddenWord[i].toLowerCase()){
-    currentRow[i].classList.add('correct');
-    
+  //  currentRow[i].classList.add('correct');
+    currentRow.forEach(box =>{
+      box.classList.add('correct');
+    })
   }
   else{
     currentRow[i].classList.add('incorrect');
