@@ -1,3 +1,7 @@
+*{
+  --correct-green: #58a351;
+}
+
 body{
     margin: 0;
     padding: 0;
@@ -26,7 +30,7 @@ body{
     align-items:center;
     justify-content: center;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
  
     transition: transform 0.5s;
     
@@ -39,8 +43,8 @@ body{
   
   .correct{
     animation: flip 0.7s ease forwards !important;
-    --bg-color: green;
-    border: 2px solid green;
+    --bg-color: var(--correct-green);
+    border: 2px solid  var(--correct-green);
   }
   
   .incorrect{
