@@ -47,8 +47,11 @@ let currentRow = rows[rowIndex];
        if(keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex < currentRow.length){
 
                 currentBox.textContent = keyPressed.toUpperCase();
-                
                 currentBox.classList.add('grey-border');
+                
+                currentBox.classList.remove('zoom-animation');
+               
+                currentBox.classList.add('zoom-animation');
                 currentBoxIndex++;
          
             
@@ -59,10 +62,11 @@ let currentRow = rows[rowIndex];
          if(keyPressed === "Backspace" && currentBoxIndex > 0){   
            
            
-            currentBoxIndex--;
-           const previousBox = currentRow[currentBoxIndex];
-           previousBox.textContent = "";
-           previousBox.classList.remove('grey-border');
+          currentBoxIndex--;
+           const currentBox = currentRow[currentBoxIndex];
+           currentBox.textContent = "";
+           currentBox.classList.remove('zoom-animation')
+           currentBox.classList.remove('grey-border');
            
          }
    
@@ -86,8 +90,9 @@ for(let i = 0; i < guess.length; i++){
     } else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
     }
-  }, i * 500);
+  }, i * 550);
 }
+
 setTimeout(() => {
   rowIndex++;
   if (rowIndex < rows.length) {
@@ -96,7 +101,7 @@ setTimeout(() => {
   } else {
     console.log("No more rows available");
   }
-}, guess.length * 500); 
+}, guess.length * 350 + 500); 
 }
    
   

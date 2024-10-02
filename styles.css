@@ -27,6 +27,9 @@ body{
     justify-content: center;
     text-align: center;
     font-size: 1.5rem;
+ 
+    transition: transform 0.5s;
+    
   }
   
   .grey-border{
@@ -34,20 +37,26 @@ body{
   }
   
   .correct{
-    animation: flip 0.6s forwards;
+    animation: flip 0.7s ease forwards !important;
     background: green;
     color: white;
   }
   
   .incorrect{
-    animation: flip 0.6s forwards;
+    animation: flip 0.7s ease forwards !important;
     background: grey;
     color: white;
   }
 
+  .zoom-animation{
+    animation: zoom 0.1s forwards;
+  }
+  
+
   @keyframes flip {
+    
     0% {
-        transform: rotateX(0)
+        transform: rotateX(0deg)
     }
 
     50%{
@@ -57,4 +66,21 @@ body{
     100% {
       transform: rotateX(0deg)
   }
+
+  }
+
+
+  @keyframes zoom {
+    0% {
+      transform: scale(1,1);
+    }
+
+    50% {
+      transform: scale(1,1.5);
+    }
+
+
+    100% {
+      transform: scale(1,1);
+    }
   }
