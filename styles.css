@@ -32,6 +32,7 @@ body{
     
   }
   
+  
   .grey-border{
     border: 2px solid grey;
   }
@@ -39,7 +40,7 @@ body{
   .correct{
     animation: flip 0.7s ease forwards !important;
     --bg-color: green;
-    
+    border: 2px solid green;
   }
   
   .incorrect{

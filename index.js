@@ -87,6 +87,7 @@ for(let i = 0; i < guess.length; i++){
   setTimeout(() => {
     if (guess[i] === hiddenWord[i].toLowerCase()) {
       currentRow[i].classList.add('correct');   // Apply correct animation with delay
+      
     } else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
     }
