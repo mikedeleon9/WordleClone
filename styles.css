@@ -26,7 +26,7 @@ body{
     align-items:center;
     justify-content: center;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
  
     transition: transform 0.5s;
     
@@ -38,14 +38,14 @@ body{
   
   .correct{
     animation: flip 0.7s ease forwards !important;
-    background: green;
-    color: white;
+    --bg-color: green;
+    
   }
   
   .incorrect{
     animation: flip 0.7s ease forwards !important;
-    background: grey;
-    color: white;
+    --bg-color: gray;
+    
   }
 
   .zoom-animation{
@@ -56,15 +56,21 @@ body{
   @keyframes flip {
     
     0% {
-        transform: rotateX(0deg)
+        transform: rotateX(0deg);
+        background-color: initial;
+        color: initial;
     }
 
     50%{
        transform: rotateX(90deg);
+       background-color: initial;
+       color: initial;
     }
 
     100% {
-      transform: rotateX(0deg)
+      transform: rotateX(0deg);
+      background-color: var(--bg-color);
+      color: white;
   }
 
   }
@@ -76,7 +82,7 @@ body{
     }
 
     50% {
-      transform: scale(1,1.5);
+      transform: scale(1,1.1);
     }
 
 
