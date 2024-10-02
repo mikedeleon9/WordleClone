@@ -55,7 +55,7 @@ body{
 
   .yellow{
     animation: flip 0.7s ease forwards !important;
-    background-color: yellow;
+    --bg-color: #f2d46f;
   }
 
   .zoom-animation{

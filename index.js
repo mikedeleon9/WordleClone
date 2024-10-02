@@ -98,8 +98,7 @@ for(let i = 0; i < guess.length; i++){
     else if(hiddenWordCopy.includes(guess[i])){
       
       currentRow[i].classList.add('yellow');
-      hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null;
-      console.log(guess[i])
+  
     }
     else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
