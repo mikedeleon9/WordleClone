@@ -53,6 +53,11 @@ body{
     
   }
 
+  .yellow{
+    animation: flip 0.7s ease forwards !important;
+    background-color: yellow;
+  }
+
   .zoom-animation{
     animation: zoom 0.1s forwards;
   }

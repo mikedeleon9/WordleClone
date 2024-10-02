@@ -82,6 +82,7 @@ let currentRow = rows[rowIndex];
 
 function checkGuess(){
   const guess = Array.from(currentRow).map(box=> box.textContent.trim().toLowerCase());
+  const hiddenWordCopy = [...hiddenWord]
   let allCorrect;
   const guessWord = guess.toString();
   
@@ -91,8 +92,16 @@ for(let i = 0; i < guess.length; i++){
   setTimeout(() => {
     if (guess[i] === hiddenWord[i].toLowerCase()) {
       currentRow[i].classList.add('correct');   // Apply correct animation with delay
+      hiddenWordCopy[i] = null; // Mark as used
       
-    } else {
+    } 
+    else if(hiddenWordCopy.includes(guess[i])){
+      
+      currentRow[i].classList.add('yellow');
+      hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null;
+
+    }
+    else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
       allCorrect = false;
     }
