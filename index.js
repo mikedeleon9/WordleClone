@@ -6,7 +6,7 @@ const totalBoxes = 30;
 const letters = 'abcdefghijklmnopqrstuvwxyz';
 const splitLetters = letters.split(',');
 let rowIndex = 0;
-  
+const boxesArray = [];
 
 for(x = 0; x < totalBoxes; x++){
   const boxes = document.createElement('div');
@@ -20,8 +20,6 @@ const boxes = document.querySelectorAll('.box');
   
 
 
-
-const boxesArray = [];
 
 boxes.forEach(box => {
   boxesArray.push(box);
@@ -37,9 +35,6 @@ for(let i = 0; i < boxesArray.length; i += itemsPerRow){
 }
 
 let currentRow = rows[rowIndex];
-
-
-
 
 
 
@@ -65,7 +60,7 @@ let currentRow = rows[rowIndex];
            
            
             currentBoxIndex--;
-           const previousBox = boxes[currentBoxIndex];
+           const previousBox = currentRow[currentBoxIndex];
            previousBox.textContent = "";
            previousBox.classList.remove('black-border');
            
