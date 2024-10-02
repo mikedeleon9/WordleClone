@@ -48,7 +48,7 @@ let currentRow = rows[rowIndex];
 
                 currentBox.textContent = keyPressed.toUpperCase();
                 
-                currentBox.classList.add('black-border');
+                currentBox.classList.add('grey-border');
                 currentBoxIndex++;
          
             
@@ -62,7 +62,7 @@ let currentRow = rows[rowIndex];
             currentBoxIndex--;
            const previousBox = currentRow[currentBoxIndex];
            previousBox.textContent = "";
-           previousBox.classList.remove('black-border');
+           previousBox.classList.remove('grey-border');
            
          }
    
