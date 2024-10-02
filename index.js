@@ -80,19 +80,23 @@ function checkGuess(){
 
   
 for(let i = 0; i < guess.length; i++){
-  if(guess[i] === hiddenWord[i].toLowerCase()){
-  //  currentRow[i].classList.add('correct');
-    currentRow.forEach(box =>{
-      box.classList.add('correct');
-    })
-  }
-  else{
-    currentRow[i].classList.add('incorrect');
-  }
+  setTimeout(() => {
+    if (guess[i] === hiddenWord[i].toLowerCase()) {
+      currentRow[i].classList.add('correct');   // Apply correct animation with delay
+    } else {
+      currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
+    }
+  }, i * 500);
 }
+setTimeout(() => {
   rowIndex++;
-  currentRow = rows[rowIndex];
-  currentBoxIndex = 0;
+  if (rowIndex < rows.length) {
+    currentRow = rows[rowIndex]; // Update currentRow to the next row
+    currentBoxIndex = 0;         // Reset currentBoxIndex for the next row
+  } else {
+    console.log("No more rows available");
+  }
+}, guess.length * 500); 
 }
    
   
