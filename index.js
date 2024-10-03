@@ -96,13 +96,8 @@ for(let i = 0; i < guess.length; i++){
     } 
 
   
-    for(let i=0; i < guess.length; i++){
-      if(currentRow[i].classList.contains('correct')){
-        return;
-      }
-    }
 
-    if(hiddenWordCopy.includes(guess[i])){
+    else if(hiddenWordCopy.includes(guess[i])){
       currentRow[i].classList.add('yellow');
       hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null; 
     }
