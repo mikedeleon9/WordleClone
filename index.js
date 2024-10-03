@@ -54,8 +54,7 @@ let currentRow = rows[rowIndex];
                
                 currentBox.classList.add('zoom-animation');
                 currentBoxIndex++;
-         
-            
+                    
             }
    
  
@@ -85,7 +84,7 @@ function checkGuess(){
   const hiddenWordCopy = [...hiddenWord.map(letter => letter.toLowerCase())];
   let allCorrect;
   const guessWord = guess.toString();
- 
+  
 
   
 for(let i = 0; i < guess.length; i++){
@@ -95,10 +94,17 @@ for(let i = 0; i < guess.length; i++){
       hiddenWordCopy[i] = null; // Mark as used
       
     } 
-    else if(hiddenWordCopy.includes(guess[i])){
-      
-      currentRow[i].classList.add('yellow');
+
   
+    for(let i=0; i < guess.length; i++){
+      if(currentRow[i].classList.contains('correct')){
+        return;
+      }
+    }
+
+    if(hiddenWordCopy.includes(guess[i])){
+      currentRow[i].classList.add('yellow');
+      hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null; 
     }
     else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
@@ -124,6 +130,7 @@ setTimeout(() => {
     console.log("No more rows available");
   }
 }, guess.length * 350 + 500); 
+
 }
    
   
