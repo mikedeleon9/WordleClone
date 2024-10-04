@@ -5,6 +5,7 @@ const hiddenWord = ["P", "A", "R", "T", "Y"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
 const letters = 'abcdefghijklmnopqrstuvwxyz';
+const quertyLetters = "qwertyuiopasdfghjklzxcvbnm";
 const letterBank = letters.split('');
 let rowIndex = 0;
 const boxesArray = [];
