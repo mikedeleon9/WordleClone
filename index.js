@@ -1,5 +1,6 @@
 
 const mainContainer = document.querySelector(".main-container");
+const keyboardContainer = document.querySelector('.keyboard-container')
 let currentBoxIndex = 0;
 const hiddenWord = ["P","A","R","T","Y"];
 const hiddenWordString = hiddenWord.join().toLowerCase();
@@ -9,43 +10,45 @@ const splitLetters = letters.split(',');
 let rowIndex = 0;
 const boxesArray = [];
 
+
+//Creating all 30 boxes
 for(x = 0; x < totalBoxes; x++){
   const boxes = document.createElement('div');
   boxes.className = "box";
-   
-
   mainContainer.appendChild(boxes)
 }
 
+//Declaring the box div I just created
 const boxes = document.querySelectorAll('.box');
   
-
-
-
+//Adding each box to the boxesArray which I will need to separate them later into rows
 boxes.forEach(box => {
   boxesArray.push(box);
   box.classList.add('box')
 })
 
+//Declaring rows variable and how many rows there will be so I can divide the boxesArray later on 
 const rows = [];
 const itemsPerRow = 5;
 
 
+//Looping through the boxes array 5 items at a time so I can get 6 rows (30/5)
 for(let i = 0; i < boxesArray.length; i += itemsPerRow){
   rows.push(boxesArray.slice(i, i + itemsPerRow))
 }
 
+//Declaring the current row so I can keep track
 let currentRow = rows[rowIndex];
 
 
-
+//Adding Event Listener to check for keypresses
  document.addEventListener('keydown',function(event) {
-       const keyPressed = event.key;
-       const currentBox = currentRow[currentBoxIndex];
+    const keyPressed = event.key;
+    const currentBox = currentRow[currentBoxIndex];
    
    
-   
-       if(keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex < currentRow.length){
+//This if statement excludes any key that is not a letter and makes sure that the currentIndex is not bigger than the row itself to avoid conflicts   
+if(keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex < currentRow.length){
 
                 currentBox.textContent = keyPressed.toUpperCase();
                 currentBox.classList.add('grey-border');
@@ -128,6 +131,7 @@ setTimeout(() => {
 
 }
    
+
   
    
 
