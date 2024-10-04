@@ -4,9 +4,11 @@ let currentBoxIndex = 0;
 const hiddenWord = ["P", "A", "R", "T", "Y"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
-const letters = 'abcdefghijklmnopqrstuvwxyz';
+let index = 19;
+
+
 const quertyLetters = "qwertyuiopasdfghjklzxcvbnm";
-const letterBank = letters.split('');
+const letterBank = quertyLetters.split('');
 let rowIndex = 0;
 const boxesArray = [];
 
@@ -42,7 +44,7 @@ document.addEventListener('keydown', function(event) {
   const currentBox = currentRow[currentBoxIndex];
 
   // Only accept valid letters and prevent going beyond the row's length
-  if (keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex < currentRow.length) {
+  if (keyPressed !== "Backspace" && quertyLetters.includes(keyPressed) && currentBoxIndex < currentRow.length) {
     currentBox.textContent = keyPressed.toUpperCase();
     currentBox.classList.add('grey-border', 'zoom-animation');
     currentBoxIndex++;
@@ -128,11 +130,30 @@ function validateGuess(guess, hiddenWordCopy) {
 
 
 
+
 //creating Letters
 
-letterBank.forEach(letter => {
- const letterBankDiv = document.createElement('div');
-  letterBankDiv.textContent = letter.toUpperCase();
-  letterBankDiv.classList.add('letter');
-  keyboardContainer.appendChild(letterBankDiv)
-})
+function createLetters(){
+  const numRows = 3;
+  letterBank.splice(index, 0, "Enter");
+  letterBank.push("Delete")
+  const letterPerRow = Math.ceil(letterBank.length / numRows);
+
+  for (let i = 0; i< numRows; i++){
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('keyboard-row');
+
+    const rowLetters = letterBank.slice(i * letterPerRow, (i + 1) * letterPerRow)
+
+    rowLetters.forEach(letter =>{
+      const letterDiv = document.createElement('div');
+      letterDiv.textContent = letter.toUpperCase();
+      letterDiv.classList.add('letter');
+      rowDiv.appendChild(letterDiv);
+    })
+    keyboardContainer.appendChild(rowDiv)
+  }
+  
+}
+
+createLetters();

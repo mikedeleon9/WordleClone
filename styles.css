@@ -29,9 +29,14 @@ body{
   .keyboard-container{
     border: 2px solid hotpink;
     display: flex;
-    width: 30%;
-    flex-wrap: wrap;
+   
+  
     
+  }
+
+  .keyboard-row{
+  
+    border: 2px solid blue;
   }
 
   .letter{
@@ -85,6 +90,7 @@ body{
   .shake{
     animation: shake 0.2s;
   }
+  
   
 
   @keyframes flip {
