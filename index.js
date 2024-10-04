@@ -61,8 +61,8 @@ if(keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex
             }
    
  
-   
-         if(keyPressed === "Backspace" && currentBoxIndex > 0){   
+  //This if statement checks if the key pressed is backspace, if it is it deletes the text content and jumps to the previous box
+if(keyPressed === "Backspace" && currentBoxIndex > 0){   
            
            
           currentBoxIndex--;
@@ -82,6 +82,7 @@ if(keyPressed !== "Backspace" && letters.includes(keyPressed) && currentBoxIndex
   
    })
 
+   //This is the function that checks what the user enters when they press the Enter key
 function checkGuess(){
   const guess = Array.from(currentRow).map(box=> box.textContent.trim().toLowerCase());
   const hiddenWordCopy = [...hiddenWord.map(letter => letter.toLowerCase())];
@@ -89,7 +90,7 @@ function checkGuess(){
   const guessWord = guess.toString();
   
 
-  
+//A loop that goes through the user's guess and compares each letter to the hidden word, if it finds a match it adds the correct class and marks it as used  
 for(let i = 0; i < guess.length; i++){
   setTimeout(() => {
     if (guess[i] === hiddenWord[i].toLowerCase()) {
@@ -99,11 +100,13 @@ for(let i = 0; i < guess.length; i++){
     } 
 
   
-
+    //If the loop doesn't find a correct match it then looks at each guessed letter and checks if the hiddenword array includes any of the letters, if it does it marks them yellow
     else if(hiddenWordCopy.includes(guess[i])){
       currentRow[i].classList.add('yellow');
       hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null; 
     }
+
+    //If there is no match at all, it marks the letter gray
     else {
       currentRow[i].classList.add('incorrect'); // Apply incorrect animation with delay
       allCorrect = false;
