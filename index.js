@@ -5,6 +5,7 @@ const hiddenWord = ["P", "A", "R", "T", "Y"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
 const letters = 'abcdefghijklmnopqrstuvwxyz';
+const letterBank = letters.split('');
 let rowIndex = 0;
 const boxesArray = [];
 
@@ -104,7 +105,7 @@ function validateGuess(guess, hiddenWordCopy) {
       } else {
         currentRow[i].classList.add('incorrect'); // Incorrect letter
       }
-    }, i * 450);
+    }, i * 330);
   }
 
   // Check if the word guessed is correct
@@ -121,5 +122,16 @@ function validateGuess(guess, hiddenWordCopy) {
     } else {
       console.log("No more rows available");
     }
-  }, guess.length * 450 + 500); 
+  }, guess.length * 330 + 500); 
 }
+
+
+
+//creating Letters
+
+letterBank.forEach(letter => {
+ const letterBankDiv = document.createElement('div');
+  letterBankDiv.textContent = letter.toUpperCase();
+  letterBankDiv.classList.add('letter');
+  keyboardContainer.appendChild(letterBankDiv)
+})
