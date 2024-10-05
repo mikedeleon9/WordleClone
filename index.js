@@ -1,7 +1,7 @@
 const mainContainer = document.querySelector(".main-container");
 const keyboardContainer = document.querySelector('.keyboard-container')
 let currentBoxIndex = 0;
-const hiddenWord = ["C", "H", "U", "M", "P"];
+const hiddenWord = ["P", "H", "O", "T", "O"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
 let index = 19;
