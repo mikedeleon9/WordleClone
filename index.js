@@ -1,7 +1,7 @@
 const mainContainer = document.querySelector(".main-container");
 const keyboardContainer = document.querySelector('.keyboard-container')
 let currentBoxIndex = 0;
-const hiddenWord = ["P", "A", "R", "T", "Y"];
+const hiddenWord = ["C", "H", "U", "M", "P"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
 let index = 19;
@@ -149,7 +149,8 @@ function createLetters() {
       letterDiv.textContent = letter.toUpperCase();
       letterDiv.classList.add('letter');
       if (letter === 'Enter' || letter === 'Delete') {
-        letterDiv.classList.add('special-key');
+        letterDiv.classList.add('special-key', "small-text");
+        
       }
       rowDiv.appendChild(letterDiv);
     });
