@@ -12,6 +12,37 @@ const letterBank = quertyLetters.split('');
 let rowIndex = 0;
 const boxesArray = [];
 
+//creating Letters
+
+function createLetters() {
+  const rows = [
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete']
+  ];
+
+  rows.forEach((row, rowIndex) => {
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('keyboard-row');
+
+    row.forEach(letter => {
+      const letterDiv = document.createElement('div');
+      letterDiv.textContent = letter.toUpperCase();
+      letterDiv.classList.add('letter');
+      letterDiv.setAttribute('data-key', letter.toLowerCase());
+      if (letter === 'Enter' || letter === 'Delete') {
+        letterDiv.classList.add('special-key', "small-text");
+      }
+      rowDiv.appendChild(letterDiv);
+    });
+
+    keyboardContainer.appendChild(rowDiv);
+  });
+}
+
+createLetters();
+
+
 // Creating all 30 boxes
 for (let x = 0; x < totalBoxes; x++) {
   const box = document.createElement('div');
@@ -99,16 +130,43 @@ function checkGuess() {
 function validateGuess(guess, hiddenWordCopy) {
   for (let i = 0; i < guess.length; i++) {
     setTimeout(() => {
-      if (guess[i] === hiddenWord[i].toLowerCase()) {
-        currentRow[i].classList.add('correct'); // Correct letter
-        hiddenWordCopy[i] = null; // Mark as used
-      } else if (hiddenWordCopy.includes(guess[i])) {
-        currentRow[i].classList.add('yellow'); // Correct letter, wrong position
-        hiddenWordCopy[hiddenWordCopy.indexOf(guess[i])] = null;
+      const currentLetter = guess[i];
+      let status = '';
+      
+      if (currentLetter === hiddenWord[i].toLowerCase()) {
+        currentRow[i].classList.add('correct');
+        status = 'correct';
+        hiddenWordCopy[i] = null;
+      } else if (hiddenWordCopy.includes(currentLetter)) {
+        currentRow[i].classList.add('yellow');
+        status = 'yellow';
+        hiddenWordCopy[hiddenWordCopy.indexOf(currentLetter)] = null;
       } else {
-        currentRow[i].classList.add('incorrect'); // Incorrect letter
+        currentRow[i].classList.add('incorrect');
+        status = 'incorrect';
       }
+
+      updateKeyboard(currentLetter, status);
     }, i * 330);
+  }
+
+ 
+  function updateKeyboard(letter, status) {
+    const keyboardKey = document.querySelector(`.letter[data-key="${letter.toLowerCase()}"]`);
+    
+    if (keyboardKey) {
+      // Remove all status classes
+      keyboardKey.classList.remove('key-correct', 'key-yellow', 'key-incorrect');
+      
+      // Add the new status class
+      if (status === 'correct') {
+        keyboardKey.classList.add('key-correct');
+      } else if (status === 'yellow' && !keyboardKey.classList.contains('key-correct')) {
+        keyboardKey.classList.add('key-yellow');
+      } else if (status === 'incorrect' && !keyboardKey.classList.contains('key-correct') && !keyboardKey.classList.contains('key-yellow')) {
+        keyboardKey.classList.add('key-incorrect');
+      }
+    }
   }
 
   // Check if the word guessed is correct
@@ -131,32 +189,3 @@ function validateGuess(guess, hiddenWordCopy) {
 
 
 
-//creating Letters
-
-function createLetters() {
-  const rows = [
-    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
-    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
-    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete']
-  ];
-
-  rows.forEach((row, rowIndex) => {
-    const rowDiv = document.createElement('div');
-    rowDiv.classList.add('keyboard-row');
-
-    row.forEach(letter => {
-      const letterDiv = document.createElement('div');
-      letterDiv.textContent = letter.toUpperCase();
-      letterDiv.classList.add('letter');
-      if (letter === 'Enter' || letter === 'Delete') {
-        letterDiv.classList.add('special-key', "small-text");
-        
-      }
-      rowDiv.appendChild(letterDiv);
-    });
-
-    keyboardContainer.appendChild(rowDiv);
-  });
-}
-
-createLetters();

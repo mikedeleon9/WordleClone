@@ -56,6 +56,7 @@ body{
     cursor: pointer;
     background: #d3d6da;
     border-radius: 4px;
+    transition: background-color 0.3s ease;
   }
   
   .special-key {
@@ -108,6 +109,21 @@ body{
   
   .small-text{
     font-size: small;
+  }
+
+  .letter.key-correct {
+    background-color: #6aaa64;
+    color: white;
+  }
+  
+  .letter.key-yellow {
+    background-color: #c9b458;
+    color: white;
+  }
+  
+  .letter.key-incorrect {
+    background-color: #787c7e;
+    color: white;
   }
 
   @keyframes flip {
