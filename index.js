@@ -133,27 +133,29 @@ function validateGuess(guess, hiddenWordCopy) {
 
 //creating Letters
 
-function createLetters(){
-  const numRows = 3;
-  letterBank.splice(index, 0, "Enter");
-  letterBank.push("Delete")
-  const letterPerRow = Math.ceil(letterBank.length / numRows);
+function createLetters() {
+  const rows = [
+    ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p'],
+    ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l'],
+    ['Enter', 'z', 'x', 'c', 'v', 'b', 'n', 'm', 'Delete']
+  ];
 
-  for (let i = 0; i< numRows; i++){
+  rows.forEach((row, rowIndex) => {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('keyboard-row');
 
-    const rowLetters = letterBank.slice(i * letterPerRow, (i + 1) * letterPerRow)
-
-    rowLetters.forEach(letter =>{
+    row.forEach(letter => {
       const letterDiv = document.createElement('div');
       letterDiv.textContent = letter.toUpperCase();
       letterDiv.classList.add('letter');
+      if (letter === 'Enter' || letter === 'Delete') {
+        letterDiv.classList.add('special-key');
+      }
       rowDiv.appendChild(letterDiv);
-    })
-    keyboardContainer.appendChild(rowDiv)
-  }
-  
+    });
+
+    keyboardContainer.appendChild(rowDiv);
+  });
 }
 
 createLetters();
