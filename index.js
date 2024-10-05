@@ -1,7 +1,7 @@
 const mainContainer = document.querySelector(".main-container");
 const keyboardContainer = document.querySelector('.keyboard-container')
 let currentBoxIndex = 0;
-const hiddenWord = ["P", "H", "O", "T", "O"];
+const hiddenWord = ["Q", "U", "A", "R", "T"];
 const hiddenWordString = hiddenWord.join('').toLowerCase(); // Fix how hiddenWordString is joined
 const totalBoxes = 30;
 let index = 19;
@@ -137,7 +137,7 @@ function validateGuess(guess, hiddenWordCopy) {
         currentRow[i].classList.add('correct');
         status = 'correct';
         hiddenWordCopy[i] = null;
-      } else if (hiddenWordCopy.includes(currentLetter)) {
+      } else if (hiddenWordCopy.includes(currentLetter) && currentLetter !== hiddenWord[i]) {
         currentRow[i].classList.add('yellow');
         status = 'yellow';
         hiddenWordCopy[hiddenWordCopy.indexOf(currentLetter)] = null;
