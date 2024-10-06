@@ -171,7 +171,7 @@ function validateGuess(guess, hiddenWordCopy) {
 
   // Check if the word guessed is correct
   if (guess === hiddenWordString) {
-    console.log("You Win!");
+    console.log("You Win Nice Job!");
   }
 
   // Move to the next row after the validation finishes
