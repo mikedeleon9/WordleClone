@@ -147,7 +147,7 @@ function validateGuess(guess, hiddenWordCopy) {
       }
 
       updateKeyboard(currentLetter, status);
-    }, i * 330);
+    }, i * 380);
   }
 
  
@@ -183,7 +183,7 @@ function validateGuess(guess, hiddenWordCopy) {
     } else {
       console.log("No more rows available");
     }
-  }, guess.length * 330 + 500); 
+  }, guess.length * 380 + 500); 
 }
 
 
