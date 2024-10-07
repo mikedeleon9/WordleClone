@@ -124,6 +124,11 @@ function checkGuess() {
     .catch(error => {
       console.error("Error fetching from API", error);
     });
+
+    currentRow.forEach(box =>{
+      box.classList.remove('grey-border')
+      
+    })
 }
 
 // Function to validate the guess after API check
@@ -140,6 +145,7 @@ function validateGuess(guess, hiddenWordCopy) {
       } else if (hiddenWordCopy.includes(currentLetter) && currentLetter !== hiddenWord[i]) {
         currentRow[i].classList.add('yellow');
         status = 'yellow';
+        
         hiddenWordCopy[hiddenWordCopy.indexOf(currentLetter)] = null;
       } else {
         currentRow[i].classList.add('incorrect');
