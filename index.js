@@ -127,7 +127,7 @@ function checkGuess() {
 
     currentRow.forEach(box =>{
       box.classList.remove('grey-border')
-      
+      box.style.border = 'none';
     })
 }
 
