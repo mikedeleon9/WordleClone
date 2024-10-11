@@ -151,7 +151,7 @@ function validateGuess(guess, hiddenWordCopy) {
         currentRow[i].classList.add('incorrect');
         status = 'incorrect';
       }
-
+        
       updateKeyboard(currentLetter, status);
     }, i * 380);
   }
@@ -159,7 +159,7 @@ function validateGuess(guess, hiddenWordCopy) {
  
   function updateKeyboard(letter, status) {
     const keyboardKey = document.querySelector(`.letter[data-key="${letter.toLowerCase()}"]`);
-    
+   
     if (keyboardKey) {
       // Remove all status classes
       keyboardKey.classList.remove('key-correct', 'key-yellow', 'key-incorrect');
@@ -173,6 +173,7 @@ function validateGuess(guess, hiddenWordCopy) {
         keyboardKey.classList.add('key-incorrect');
       }
     }
+    
   }
 
   // Check if the word guessed is correct
