@@ -125,6 +125,7 @@ function checkGuess() {
       console.error("Error fetching from API", error);
     });
 
+
     currentRow.forEach(box =>{
       box.classList.remove('grey-border')
       box.style.border = 'none';
@@ -178,7 +179,7 @@ function validateGuess(guess, hiddenWordCopy) {
 
   // Check if the word guessed is correct
   if (guess === hiddenWordString) {
-    console.log("You Win Nice Job!");
+    console.log("You Win!!");
   }
 
   // Move to the next row after the validation finishes
