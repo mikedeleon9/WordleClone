@@ -123,7 +123,7 @@ body{
   
   .letter.key-incorrect {
     background-color: #787c7e;
-    color: white;
+    color: #eee;
   }
 
   @keyframes flip {
