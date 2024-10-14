@@ -154,7 +154,7 @@ function validateGuess(guess, hiddenWordCopy) {
       }
         
       updateKeyboard(currentLetter, status);
-    }, i * 380);
+    }, i * 370);
   }
 
  
